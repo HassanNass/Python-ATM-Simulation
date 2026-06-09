@@ -115,3 +115,42 @@ def withdraw(user):
 	return 
 
 
+# Display the ATM menu and allow the user to perform account operations
+def atm_menu(user):
+
+	# Keep showing the menu until the user chooses to exit
+	while True:
+
+		# Display the ATM options
+		print("\n--- ATM Menu ---")
+		print("1. Check Balance")
+		print("2. Deposit")
+		print("3. Withdraw")
+		print("4. Exit")
+
+		# Get the user's menu choice and remove any extra spaces
+		choice = input("Enter your choice (1-4): ").strip()
+		print("-" * 30)
+
+		# Display the current account balance
+		if choice == "1":
+			print(f"Your current balance is: ${user['balance']:.2f}")
+		
+		# Deposit money into the account
+		elif choice == "2":
+			deposit(user)
+
+		# Withdrawal money from the account
+		elif choice == "3":
+			withdraw(user)
+
+		# Exit the ATM menu
+		elif choice == "4":
+			print("Thank you for using our ATM. Goodbye.")
+			break
+
+		# Handle invalid menu selections
+		else:
+			print("Invalid option. Please enter a number from 1 to 4.")
+
+
