@@ -154,3 +154,45 @@ def atm_menu(user):
 			print("Invalid option. Please enter a number from 1 to 4.")
 
 
+def main(users):
+
+	# Keep showing the main menu until the user chooses to exit
+	while True:
+
+		# Display the menu options
+		print("--- Welcome to the ATM ---")
+		print("1. Login")
+		print("2. Create new account")
+		print("3. Exit")
+
+		# Get the user's menu choice and remove any extra spaces
+		choice = input("Enter your Choice (1-3): ").strip()
+		print("-" * 30)
+
+		# Log in to an existing account
+		if choice == "1":
+			user = authenticate(users)
+
+			# If authentication succeeds, open the ATM menu
+			if user is not None:
+				atm_menu(user)
+			else:
+				print("Login failed")
+
+		# Create a new account
+		elif choice == "2":
+			create_account(users)
+
+		# Exit the program
+		elif choice == "3":
+			print("Thank you for using our ATM. Goodbye.")
+			break
+
+		# Handle invalid menu selections
+		else:
+			print("Invalid option. Please enter a number from 1 to 3.")
+
+
+# Run the program only when this file is executed directly
+if __name__ == "__main__":
+	main(users)
