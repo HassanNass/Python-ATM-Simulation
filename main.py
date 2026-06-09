@@ -85,3 +85,33 @@ def deposit(user):
 	return
 
 
+# Withdraw money from user's account
+def withdraw(user):
+
+	# Attempt to convert the user's input into a number
+	try:
+		amount = float(input("Enter the amount to withdraw: "))
+
+	# Handle invalid inputs such as letters or special characters
+	except ValueError:
+		print("Invalid input.  Please enter a number.")
+		return
+
+	# Make sure that the withdrawal amount is positive
+	if amount <= 0:
+		print("Amount must be greater than 0.")
+		return
+
+	# Check if the user has enough funds to complete the withdrawal
+	elif amount > user['balance']:
+		print(f"Insufficient funds! Your balance is only ${user['balance']:.2f}")
+		return
+
+	# Subtract the withdrawal amount from the user's balance
+	user['balance'] -= amount
+
+	# Display the updated balance then exit the function
+	print(f"Withdrawal successful. Your new balance is: ${user['balance']:.2f}")
+	return 
+
+
